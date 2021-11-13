@@ -1,0 +1,10 @@
+<?php
+return [
+    'components' => [
+        'Db' => [
+            'user' => 'root',
+            'password' => 'password',
+            'db' => 'smart-tek-test-php.local',
+        ]
+    ]
+];

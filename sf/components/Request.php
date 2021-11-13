@@ -5,7 +5,7 @@
  * User: amelexik
  * Date: 13.11.2021
  */
-Class Request extends Component
+class Request extends Component
 {
 
     /**
@@ -16,17 +16,14 @@ Class Request extends Component
     {
         parent::__construct($config);
 
-        // normalize request
-        if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
-            if (isset($_GET))
-                $_GET = $this->stripSlashes($_GET);
-            if (isset($_POST))
-                $_POST = $this->stripSlashes($_POST);
-            if (isset($_REQUEST))
-                $_REQUEST = $this->stripSlashes($_REQUEST);
-            if (isset($_COOKIE))
-                $_COOKIE = $this->stripSlashes($_COOKIE);
-        }
+        if (isset($_GET))
+            $_GET = $this->stripSlashes($_GET);
+        if (isset($_POST))
+            $_POST = $this->stripSlashes($_POST);
+        if (isset($_REQUEST))
+            $_REQUEST = $this->stripSlashes($_REQUEST);
+        if (isset($_COOKIE))
+            $_COOKIE = $this->stripSlashes($_COOKIE);
     }
 
     /**
@@ -56,5 +53,15 @@ Class Request extends Component
     public function getPost($name, $defaultValue = null)
     {
         return isset($_POST[$name]) ? $_POST[$name] : $defaultValue;
+    }
+
+    /**
+     * @param $name
+     * @param null $defaultValue
+     * @return null
+     */
+    public function getFile($name, $defaultValue = null)
+    {
+        return isset($_FILES[$name]) ? $_FILES[$name] : $defaultValue;
     }
 }
