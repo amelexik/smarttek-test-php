@@ -27,4 +27,15 @@ Class Model
             return $model;
         }
     }
+
+    /**
+     * Fetch records
+     * @param int $limit
+     * @return mixed
+     */
+    public function getAll($limit = 10)
+    {
+        $query = "SELECT * FROM {$this->table} LIMIT 0,{$limit}";
+        return $this->db->queryAll($query);
+    }
 }

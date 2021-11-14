@@ -8,6 +8,18 @@
 class SiteController extends Controller
 {
 
+    /**
+     * @var CallHistoryService
+     */
+    private CallHistoryService $callHistoryService;
+
+    public function __construct($data = array())
+    {
+        parent::__construct($data);
+        $this->callHistoryService = new CallHistoryService();
+
+    }
+
     public function actionIndex()
     {
         if (Sf::app()->Request->isPost()) {
@@ -26,19 +38,21 @@ class SiteController extends Controller
                 ]);
                 return;
             }
-        }
-
-        try {
-            $callHistoryLoader = new CallHistoryService();
-            $callHistoryLoader->processFile($csvFile['tmp_name']);
-        }
-        catch (Exception $e){
-            $this->setData([
-                'error' => $e->getMessage()
-            ]);
+            try {
+                $this->callHistoryService->processFile($csvFile['tmp_name']);
+            } catch (Exception $e) {
+                $this->setData([
+                    'error' => $e->getMessage()
+                ]);
+            }
+            header('location:/');
         }
 
 
+        $callStatistic = $this->callHistoryService->getStatistic();
+        $this->setData([
+            'result' => $callStatistic
+        ]);
 
     }
 
