@@ -9,7 +9,7 @@ Class Model
 {
     private static $_models = [];
     protected $db;
-    protected $table;
+    protected string $table;
 
     public function __construct()
     {

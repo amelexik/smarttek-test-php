@@ -16,6 +16,7 @@ define('SF_COMPONENTS_PATH', ROOT . DS . 'sf' . DS . 'components');
 define('APP_PATH', ROOT . DS . 'app');
 define('CONFIG_PATH', ROOT . DS . 'app' . DS . 'config');
 define('CONTROLLERS_PATH', ROOT . DS . 'app' . DS . 'controllers');
+define('SERVICES_PATH', ROOT . DS . 'app' . DS . 'services');
 define('MODEL_PATH', ROOT . DS . 'app' . DS . 'model');
 define('VIEWS_PATH', ROOT . DS . 'app' . DS . 'views');
 define('LAYOUT_PATH', ROOT . DS . 'app' . DS . 'views' . DS . 'layouts');
@@ -64,6 +65,7 @@ class Sf
             SF_BASE_PATH,
             SF_COMPONENTS_PATH,
             CONTROLLERS_PATH,
+            SERVICES_PATH,
             MODEL_PATH
         ];
 

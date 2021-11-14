@@ -8,31 +8,13 @@
 class Request extends Component
 {
 
-    /**
-     * Request constructor.
-     * @param $config
-     */
-    public function __construct($config)
-    {
-        parent::__construct($config);
-
-        if (isset($_GET))
-            $_GET = $this->stripSlashes($_GET);
-        if (isset($_POST))
-            $_POST = $this->stripSlashes($_POST);
-        if (isset($_REQUEST))
-            $_REQUEST = $this->stripSlashes($_REQUEST);
-        if (isset($_COOKIE))
-            $_COOKIE = $this->stripSlashes($_COOKIE);
-    }
 
     /**
-     * @param $data
-     * @return array|string
+     * @return bool
      */
-    public function stripSlashes(&$data)
+    public function isPost(): bool
     {
-        return is_array($data) ? array_map(array($this, 'stripSlashes'), $data) : stripslashes($data);
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
     /**

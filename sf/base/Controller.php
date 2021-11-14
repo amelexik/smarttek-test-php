@@ -23,6 +23,13 @@ class Controller
     }
 
     /**
+     * @param $value
+     */
+    public function setData($value){
+        $this->_data = $value;
+    }
+
+    /**
      * @return mixed
      */
     public function getData()
